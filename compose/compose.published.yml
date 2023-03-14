@@ -6,8 +6,8 @@ services:
     environment:
       - MYSQL_URL=mysql://root:passwd@mariadb:3306/user
       - insecure=false
-      - USER_CERT=/certs/user.pem
-      - USER_KEY=/certs/user-key.pem
+      - USER_CERT=/certs/user-api.pem
+      - USER_KEY=/certs/user-api-key.pem
       - ROOT_CA=/certs/rootCA.pem
       - PORT=4000
       - AUTH_API_URL=auth-api:4000
@@ -27,8 +27,8 @@ services:
     environment:
       - MONGO_URL=mongodb://root:task@mongo
       - insecure=false
-      - TASK_CERT=/certs/task.pem
-      - TASK_KEY=/certs/task-key.pem
+      - TASK_CERT=/certs/task-api.pem
+      - TASK_KEY=/certs/task-api-key.pem
       - ROOT_CA=/certs/rootCA.pem
       - PORT=4000
       - AUTH_API_URL=auth-api:4000
@@ -48,13 +48,13 @@ services:
     environment:
       - MYSQL_URL=mysql://root:passwd@mariadb:3306/auth
       - insecure=false
-      - AUTH_CERT=/certs/auth.pem
-      - AUTH_KEY=/certs/auth-key.pem
+      - AUTH_CERT=/certs/auth-api.pem
+      - AUTH_KEY=/certs/auth-api-key.pem
       - PORT=4000
       - USER_API_URL=user-api:4000
       - JWT_SECRET=super-secret
-      - USER_CERT=/certs/user.pem
-      - USER_KEY=/certs/user-key.pem
+      - USER_CERT=/certs/user-api.pem
+      - USER_KEY=/certs/user-api-key.pem
       - ROOT_CA=/certs/rootCA.pem
       - JAEGER_URL=http://tracing:14268/api/traces
     ports:

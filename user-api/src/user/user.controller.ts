@@ -52,12 +52,14 @@ export class UserController {
     }
   }
 
+  @UseGuards(GrpcAuthGuard)
   @GrpcMethod('UserService')
   async Update(req: UpdateRequest): Promise<UpdateResponse> {
     try {
       delete req.user.createdAt;
       delete req.user.updatedAt;
 
+      await this.validateDto(req, CreateUserDto);
       const user = await this.userService.updateUser({
         where: {
           id: +req.user.id,
