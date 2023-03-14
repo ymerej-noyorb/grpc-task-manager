@@ -57,7 +57,10 @@ https://github.com/FiloSottile/mkcert
 ### Certificates and rootCA
 
 ```bash
-mkcert $API_DNS localhost
+mkcert user-api localhost
+mkcert auth-api localhost
+mkcert task-api localhost
+mkcert front localhost
 cp $(mkcert -CAROOT)/rootCA.pem .
 ```
 
@@ -75,4 +78,10 @@ secure=false
 TASK_API_URL=localhost:4001
 AUTH_API_URL=localhost:4002
 USER_API_URL=localhost:4000
+```
+
+## Start the servers
+
+```bash
+docker compose up -d
 ```
